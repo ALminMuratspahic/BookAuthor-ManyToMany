@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="createbookstyle.css">
+
+    <title>Add Author</title>
+<body>
+<div class="container" align="center">
+
+    <h1>Create Author</h1>
+
+    <form th:action="@{/saveAuthor}" th:object="${author}" method="post">
+        <label for="firstname">First Name</label>
+        <input id="firstname" type="text" th:field="*{firstName} "> <br/>
+
+        <label for="lastname">Last Name</label>
+        <input id="lastname" type="text" th:field="*{lastName}"><br/>
+
+        <button type="submit">Save</button>
+    </form>
+</div>
+
+</body>
+</html>

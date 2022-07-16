@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form th:action="@{/upload}" method="post">
+    <label for="myFile">Izaberi sliku</label>
+    <input type="file" id="myFile">
+    <button type="submit">Save</button>
+</form>
+
+
+</body>
+</html>

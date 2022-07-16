@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Book Details</title>
+    <style type="text/css">
+    body{
+      background-color:#d6d3d2;
+    }
+
+    h2 {
+        font-size:20px;
+        color:#30a3ab;
+        padding-top:20px;
+        padding-bottom:20px;
+    }
+    span{
+       display:inline-block;
+       width:200px;
+       text-align:left;
+       margin-bottom:2px;
+        }
+    .btn-primary{
+        padding:3px;
+        text-align: center;
+        margin: 4px 2px;
+        }
+    </style>
+
+</head>
+<body>
+<a th:href="@{/}" class="btn btn-primary"> <i class="fa fa-home"></i>Home</a>
+    <div align="center" th:object="${bookdetails}">
+        <h2>Title: <span th:text="${bookdetails.book.title}"></span></h2>
+        <span>Country:</span> <span th:text="${bookdetails.country}"></span><br/>
+        <span>Language:</span> <span th:text="${bookdetails.language}"></span><br/>
+        <span>Publisher:</span> <span th:text="${bookdetails.publisher}"></span><br/>
+        <span>Number Of Pages:</span> <span th:text="${bookdetails.pages}"></span><br/>
+        <span>Number Of Pages:</span> <span th:text="${bookdetails.publicationDate}"></span><br/>
+    </div>
+</body>
+</html>

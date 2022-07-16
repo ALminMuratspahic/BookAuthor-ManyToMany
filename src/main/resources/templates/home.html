@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="home.css">
+
+    <title>Library Home Page</title>
+</head>
+<body>
+
+<div class="topheader">
+    <ul>
+        <li><a href="createbook" class="btn btn-primary">Create Book</a></li>
+        <li><a href="createauthor" class="btn btn-primary">Create Author</a></li>
+        <li> <a href="authors" class="btn btn-primary">View Author</a></li>
+
+        <div class="search-container">
+            <form action="#" th:action="@{/search}" method="get">
+                <input type="text" placeholder="Search Book Title,Genre" name="keyword">
+                <button class="btn btn-primary" type="submit"> <i class="fa fa-search"></i> </button>
+            </form>
+        </div>
+    </ul>
+
+
+</div>
+
+<div class="container" align="center">
+<h1>List of Book</h1>
+   <p>Number Of Book:  <span th:text="${numberOfBook}"></span> </p>
+<table class="table">
+    <thead style="background-color:gray">
+            <td>Book Id:</td>
+            <td>Title:
+                 <a th:href="@{/sortAsc}" class="btn btn-secondary"> <i class="fa fa-sort-down"></i></a>
+                 <a th:href="@{/sortDesc}" class="btn btn-secondary"> <i class="fa fa-sort-up"></i></a>
+            </td>
+
+            <td>Genre</td>
+            <td>Author:</td>
+            <td>Action:</td>
+    </thead>
+    <tbody th:each="book:${books}">
+        <tr>
+            <td th:text="${book.bookId}"></td>
+            <td>
+                <a th:href="@{'/bookdetails/'+${book.bookId}}" th:text="${book.title}" class="btn btn-info"></a>
+            </td>
+            <td th:text="${book.genre}"></td>
+            <td>
+                <ul>
+                    <li  th:each="author: ${book.authors}" th:text="${author.firstName}+' '+ ${author.lastName}"></li>
+                </ul>
+            </td>
+            <td>
+                <a th:href="@{'/deleteBook/'+${book.bookId}}" class="btn btn-danger">Delete</a>
+                <a th:href="@{'/editBook/'+${book.bookId}}" class="btn btn-warning">Edit</a>
+
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+
+</div>
+</body>
+</html>

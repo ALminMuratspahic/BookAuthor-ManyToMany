@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="createbookstyle.css">
+
+    <title>Create a Book</title>
+</head>
+
+<body>
+    <div align="center">
+        <h1>Create a Book</h1>
+
+        <div class="container">
+        <form  action="#" th:action="@{/savebook}" th:object="${book}" method="post">
+            <label>Create Author:</label>
+            <a th:href="@{/createauthor}" class="btn btn-primary"><i class="fa fa-plus"></i> Add</a>
+            <br/>
+            <label for="authors">Choose Authors:</label>
+            <select multiple="multiple" name="authors" id="authors" th:field="*{authors}">
+                <option th:each="author: ${authors}" th:value="${author.authorId}" th:text="${author.firstName}+' '+${author.lastName}"></option>
+            </select>
+            <br>
+            <label for="bookTitle">Title:</label>
+            <input id="bookTitle" type="text" th:field="*{title}" required="true"><br>
+
+            <label for="genre">Select Genre:</label>
+            <select id="genre" name="genre" th:field="*{genre}">
+                <option th:each="genre : ${T(almin.Library.model.Genre).values()}"
+                        th:value="${genre}" th:text="${genre}">
+            </select>
+
+
+            <div align="center" th:object="${bookdetails}">
+                <label for="country">Country:</label>
+                <input id="country" type="text" th:field="*{country}" required="true"><br/>
+
+                <label for="language">Language:</label>
+                <input id="language" type="text" th:field="*{language}" required="true"><br/>
+
+                <label for="publisher">Publisher:</label>
+                <input id="publisher" type="text" th:field="*{publisher}" required="true"><br/>
+
+                <label for="numberPg">Number Of Pages:</label>
+                <input id="numberPg" type="text" th:field="*{pages}"><br/>
+
+                <label for="date">Public Date:</label>
+                <input id="date" type="date" th:field="*{publicationDate}">
+            </div>
+            <br/>
+
+            <input type="reset"value="Reset" class="btn btn-light">
+            <button type="submit" class="btn btn-success">Save</button>
+         </form>
+        </div>
+     </div>
+ </body>
+ </html>

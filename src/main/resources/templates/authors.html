@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="authorview.css">
+
+    <title>Authors list</title>
+</head>
+<body>
+
+<a th:href="@{/}" class="btn btn-primary"> <i class="fa fa-home"></i>Home</a>
+<div class="container" align="center">
+    <h1>List of Authors</h1>
+    <table class="table">
+        <thead>
+        <td>Author Id</td>
+        <td>First Name
+            <a th:href="@{/sortAuthorAsc}" class="btn btn-secondary"> <i class="fa fa-sort-down"></i></a>
+            <a th:href="@{/sortAuthorDesc}" class="btn btn-secondary"> <i class="fa fa-sort-up"></i></a>
+
+        </td>
+        <td>Last Name</td>
+        <td>Books</td>
+        <td>Action:</td>
+        </thead>
+        <tbody th:each="author:${authors}">
+        <tr>
+            <td th:text="${author.authorId}"></td>
+            <td th:text="${author.firstName}"></td>
+            <td th:text="${author.lastName}"></td>
+            <td>
+                <ul>
+                    <li th:each="book:${author.books}" th:text="${book.title}"></li>
+                </ul>
+            </td>
+            <td><a th:href="@{'/editAuthor/'+${author.authorId}}" class="btn btn-warning">Edit</a>
+
+                <a th:if="${author.books.empty}" th:href="@{'/deleteAuthor/'+${author.authorId}}"
+                   class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

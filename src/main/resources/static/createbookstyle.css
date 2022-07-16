@@ -1,0 +1,36 @@
+
+body {
+background-color:#dfe1e8;
+}
+
+h1 {
+font-size:20px;
+color:gray;
+padding-top:15px;
+padding-bottom:15px;
+}
+
+label {
+    display: inline-block;
+    width: 200px;
+    margine: 5px;
+    text-align: left;
+    padding:4px;
+}
+
+input[type=text],input[type=date], select {
+    display:inline-block;
+    width:200px;
+}
+
+.btn-primary{
+    width:200px;
+}
+.btn-success,.btn-light{
+width:100px;
+}
+
+
+
+
+
